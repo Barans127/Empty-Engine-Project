@@ -1,0 +1,6 @@
+// Use this to load images faster. Create ImagesLoader and pass this file.
+// Syntax: fileLocation : idName
+// NOTE: file location root is taken from this file location. So no need to write "resources" folder
+// name as this txt file is in resources folder.
+// idName is used to access resource through Resources class.
+logo.png : logo
