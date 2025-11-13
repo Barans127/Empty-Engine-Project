@@ -2,6 +2,8 @@
 
 Empty project.
 There is an example of loading image and running app with that image as button.
+Project code starts at core subproject com.project.main
+
 A [libGDX](https://libgdx.com/) project generated with [gdx-liftoff](https://github.com/libgdx/gdx-liftoff).
 
 ## Platforms

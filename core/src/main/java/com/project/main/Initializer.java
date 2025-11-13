@@ -9,11 +9,6 @@ public class Initializer implements StartListener {
     // Our form to work on.
     private FirstForm form;
 
-    /** Call to initialize engine. */
-    public Engine initialize(){
-        return Engine.initialize(this);
-    }
-
     /** Called when engine is fully loaded. */
     @Override
     public void startup() {

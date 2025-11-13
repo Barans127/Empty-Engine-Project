@@ -2,6 +2,7 @@ package com.project.main.lwjgl3;
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
+import com.engine.core.Engine;
 import com.project.main.Initializer;
 
 /** Launches the desktop (LWJGL3) application. */
@@ -12,8 +13,7 @@ public class Lwjgl3Launcher {
     }
 
     private static Lwjgl3Application createApplication() {
-        Initializer initializer = new Initializer();
-        return new Lwjgl3Application(initializer.initialize(), getDefaultConfiguration());
+        return new Lwjgl3Application(Engine.initialize(new Initializer()), getDefaultConfiguration());
     }
 
     private static Lwjgl3ApplicationConfiguration getDefaultConfiguration() {

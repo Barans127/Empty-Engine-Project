@@ -574,16 +574,16 @@ public class Engine extends GdxWrapper {
 			return;
 		int old = currentMenu;
 		currentMenu = state;
+        Engine p = Engine.getInstance();
 		if (inform && currentMenu >= 0){
-			Engine p = Engine.getInstance();
 			if (old >= 0){
 				p.menu[old].release(); // kad atleistu kontroles. tai yra jei jos uzspaustos.
 				p.menu[old].hide(); // pranes, kad paslepia.
 			}
-			Engine.getInstance().topper.formChange(); // taip todel, kad pranestu pries show.
+			p.topper.formChange(); // taip todel, kad pranestu pries show.
 			p.menu[currentMenu].show(); // naujam meniu prane�, kad jis bus rodomas
 		}else {
-			Engine.getInstance().topper.formChange(); // jei jungia ne i kita forma, o pvz error forma tai nereik tu show.
+			p.topper.formChange(); // jei jungia ne i kita forma, o pvz error forma tai nereik tu show.
 		}
 //		Engine p = GdxPongy.getInstance(); // integruota i forma. pati atsimenu kameros buvimo vieta.
 //		OrthographicCamera camera = p.getAbsoluteCamera();
