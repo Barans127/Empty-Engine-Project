@@ -1,10 +1,15 @@
 # Empty Engine Project
 
 Empty project.
-There is an example of loading image and running app with that image as button.
-Project code starts at core subproject com.project.main
+Here you can find an example of loading image and running app with that image as button.
+Project example code starts at core subproject -> com.project.main
 
 A [libGDX](https://libgdx.com/) project generated with [gdx-liftoff](https://github.com/libgdx/gdx-liftoff).
+
+## Engine features
+- Custom game engine using Java (LibGDX) with simplified high-level APIs over OpenGL rendering features.
+- Custom UI framework from scratch, including components, styling, event/input system, and rendering.
+- Implemented form management, rendering batching, asset loading, and game loop logic.
 
 ## Platforms
 
