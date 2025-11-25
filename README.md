@@ -1,7 +1,7 @@
 # Empty Engine Project
 
 Empty project.
-Empty project. Here you can find an example of loading an image and running the application with that image used as a button. The example project code begins in the core subproject under com.project.main.
+Here you can find an example of loading an image and running the application with that image used as a button. The example project code begins in the core subproject under com.project.main.
 
 For an example of loading a JBConstructor file and applying physics, refer to the branch Example-of-Physics.
 
