@@ -17,10 +17,10 @@ public class Initializer implements StartListener {
         // In that file image id was defined as "logo".
         // Many images can be placed here, so no need to manually load them.
         // It will be done in ImagesLoader automatically.
-        ImagesLoader imagesLoader = new ImagesLoader();
-        imagesLoader.readFileForResources("resources/imagesToLoad.txt");
-        // Load everything now.
-        imagesLoader.loadAllNow();
+//        ImagesLoader imagesLoader = new ImagesLoader();
+//        imagesLoader.readFileForResources("resources/imagesToLoad.txt");
+//        // Load everything now.
+//        imagesLoader.loadAllNow();
 
         // Getting Engine instance.
         Engine p = Engine.getInstance();

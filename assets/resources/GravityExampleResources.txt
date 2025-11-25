@@ -1,0 +1,7 @@
+// auto generated resource file from JBConstructor
+resources/ball0.png : defaultImage0
+resources/ball1.png : defaultImage1
+resources/ball2.png : defaultImage2
+resources/ball8.png : defaultImage3
+resources/ball9.png : defaultImage4
+resources/ground.png : defaultImage5
