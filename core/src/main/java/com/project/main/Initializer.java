@@ -1,7 +1,6 @@
 package com.project.main;
 
 import com.engine.core.Engine;
-import com.engine.core.ImagesLoader;
 import com.engine.core.StartListener;
 
 /** Main initialization of engine framework. */
@@ -17,6 +16,8 @@ public class Initializer implements StartListener {
         // In that file image id was defined as "logo".
         // Many images can be placed here, so no need to manually load them.
         // It will be done in ImagesLoader automatically.
+
+        // Physics example doesn't need images loader!
 //        ImagesLoader imagesLoader = new ImagesLoader();
 //        imagesLoader.readFileForResources("resources/imagesToLoad.txt");
 //        // Load everything now.
