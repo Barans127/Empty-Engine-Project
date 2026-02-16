@@ -12,6 +12,8 @@ A [libGDX](https://libgdx.com/) project generated with [gdx-liftoff](https://git
 - Custom game engine using Java (LibGDX) with simplified high-level APIs over OpenGL rendering features.
 - Custom UI framework from scratch, including components, styling, event/input system, and rendering.
 - Implemented form management, rendering batching, asset loading, and game loop logic.
+- Supports [Spriter animations](https://brashmonkey.com/download-spriter-pro/).
+- Simplified and safe usage of the Box2D physics engine.
 
 ## Platforms
 
