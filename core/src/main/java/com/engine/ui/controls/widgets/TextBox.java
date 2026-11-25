@@ -10,7 +10,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.StringBuilder;
+import com.badlogic.gdx.utils.CharArray;
 import com.engine.core.MoreUtils;
 import com.engine.core.Resources;
 import com.engine.ui.controls.TextBlock;
@@ -23,7 +23,7 @@ public class TextBox extends TextBlock {
 	private int maxLength;
 	private TextChangedListener list;
 //	private String realText;
-	private StringBuilder realText;
+	private CharArray realText;
 	private boolean blink;
 	private int blinkCounter, blinkSpeed;
 
@@ -51,7 +51,7 @@ public class TextBox extends TextBlock {
 
 	public TextBox(TextBoxStyle style){
 		super(style, false);
-		realText = new StringBuilder();
+		realText = new CharArray();
 		tintBackground = new Color();
 		background = style.background;
 //		if (background == null)
@@ -242,7 +242,7 @@ public class TextBox extends TextBlock {
 //				if (pos == realText.length()){
 //					realText.length--;
 //				}else
-					realText.deleteCharAt(pos-1);
+				realText.deleteCharAt(pos-1);
 				pos--;
 				break;
 			case 1:
@@ -254,7 +254,7 @@ public class TextBox extends TextBlock {
 				pos++;
 				break;
 			case 3:
-				if (pos == realText.length){
+				if (pos == realText.size){
 					return;
 				}
 				realText.deleteCharAt(pos);
@@ -305,7 +305,7 @@ public class TextBox extends TextBlock {
 
 	private void updateCursorPos() {
 		GlyphLayout e = getTextController().getLayout();
-		if (realText.length == 0) { // ner teksto
+		if (realText.size == 0) { // ner teksto
 			alignHorizontalCursor(0);
 //			if (e.runs.size == 0) {
 			cursorPos = 0;
@@ -323,7 +323,7 @@ public class TextBox extends TextBlock {
 		int prevGlypCount = 0;
 		int usedGlyph = 0;
 		float lineLength = getTextController().getFontScaled().getLineHeight();
-		if (realText.length > 0) { // jeigu prieki tuscios eilutes
+		if (realText.size > 0) { // jeigu prieki tuscios eilutes
 			enterLoop:
 			while (realText.charAt(prevGlypCount) == '\n') {
 				prevGlypCount++;
@@ -352,10 +352,10 @@ public class TextBox extends TextBlock {
 			if (cursorPos > nLine.glyphs.size + prevGlypCount) { // jeigu cursor toliau, ne ant sitos eilutes
 				prevGlypCount += e.runs.get(lineIndex).glyphs.size;
 				int additional = 0;
-				while (prevGlypCount < realText.length && realText.charAt(prevGlypCount) == '\n') { // jei gale enter.
+				while (prevGlypCount < realText.size && realText.charAt(prevGlypCount) == '\n') { // jei gale enter.
 					prevGlypCount++; // pridet viena, nes enter zenklo nezymi.
 					if (prevGlypCount == cursorPos && (lineIndex == e.runs.size-1
-						|| prevGlypCount < realText.length && realText.charAt(prevGlypCount) == '\n')){ // už šitą entere. tuscia eilute.
+						|| prevGlypCount < realText.size && realText.charAt(prevGlypCount) == '\n')){ // už šitą entere. tuscia eilute.
 						int realLine = 0;
 						float y = 0;
 						while (y >= nLine.y){
@@ -445,7 +445,7 @@ public class TextBox extends TextBlock {
 			text = text.split("\n")[0]; // o gal geriau visus enter pasalint?
 		}
 //		realText.clear();
-		realText.length = 0;
+		realText.size = 0;
 //		realText.clear();
 //		realText.append(text);
 		if (hasMask){
@@ -455,7 +455,7 @@ public class TextBox extends TextBlock {
 				realText.append(this.mask);
 			}
 			super.setText(realText.toString());
-			realText.length = 0;
+			realText.size = 0;
 			realText.append(text);
 		}else
 			realText.append(text);
@@ -482,7 +482,7 @@ public class TextBox extends TextBlock {
 		x -= getTextOffsetX();
 		y -= getTextOffsetY();
 		GlyphLayout e = getTextController().getLayout();
-		if (realText.length == 0){ // ner teksto
+		if (realText.size == 0){ // ner teksto
 			cursorPos = 0;
 			alignHorizontalCursor(0);
 			alignVerticalCursor(0);
@@ -519,9 +519,9 @@ public class TextBox extends TextBlock {
 //					currentLine = index;
 //					alignHorizontalCursor(0);
 //					alignVerticalCursor(lineMove);
-					if (usedGlyph == realText.length && glyphIndex == e.runs.size){ // auksciau teksto.
+					if (usedGlyph == realText.size && glyphIndex == e.runs.size){ // auksciau teksto.
 						int lastGlyph = usedGlyph - 1;
-						if (!(lastGlyph < realText.length && realText.charAt(lastGlyph) == '\n')) {
+						if (!(lastGlyph < realText.size && realText.charAt(lastGlyph) == '\n')) {
 							glyphIndex--;
 							prevGlyps += usedGlyph - e.runs.get(glyphIndex).glyphs.size;
 							break;
@@ -540,12 +540,12 @@ public class TextBox extends TextBlock {
 			lineMove -= lineSize;
 			if (nLine != null){
 				usedGlyph += e.runs.get(glyphIndex).glyphs.size;
-				if (usedGlyph < realText.length && realText.charAt(usedGlyph) == '\n'){
+				if (usedGlyph < realText.size && realText.charAt(usedGlyph) == '\n'){
 					usedGlyph++;
 				}
 				glyphIndex++;
 			}else {
-				if (usedGlyph < realText.length && realText.charAt(usedGlyph) == '\n'){
+				if (usedGlyph < realText.size && realText.charAt(usedGlyph) == '\n'){
 					usedGlyph++;
 				}
 			}

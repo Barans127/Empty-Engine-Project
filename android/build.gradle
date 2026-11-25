@@ -6,48 +6,51 @@ buildscript {
   }
 }
 apply plugin: 'com.android.application'
-
+apply plugin: 'kotlin-android'
 
 android {
-  namespace "com.project.main"
-  compileSdk 35
+  namespace = "com.project.main"
+  compileSdk 36
   sourceSets {
     main {
       manifest.srcFile 'AndroidManifest.xml'
-      java.setSrcDirs(['src/main/java'])
-      aidl.setSrcDirs(['src/main/java'])
-      renderscript.setSrcDirs(['src/main/java'])
+      java.setSrcDirs(['src/main/java', 'src/main/kotlin'])
+      aidl.setSrcDirs(['src/main/java', 'src/main/kotlin'])
+      renderscript.setSrcDirs(['src/main/java', 'src/main/kotlin'])
       res.setSrcDirs(['res'])
       assets.setSrcDirs(['../assets'])
       jniLibs.setSrcDirs(['libs'])
     }
   }
   packagingOptions {
-		resources {
-			excludes += ['META-INF/robovm/ios/robovm.xml', 'META-INF/DEPENDENCIES.txt', 'META-INF/DEPENDENCIES',
+    resources {
+      excludes += ['META-INF/robovm/ios/robovm.xml', 'META-INF/DEPENDENCIES.txt', 'META-INF/DEPENDENCIES',
                    'META-INF/dependencies.txt', '**/*.gwt.xml']
-			pickFirsts += ['META-INF/LICENSE.txt', 'META-INF/LICENSE', 'META-INF/license.txt', 'META-INF/LGPL2.1',
+      pickFirsts += ['META-INF/LICENSE.txt', 'META-INF/LICENSE', 'META-INF/license.txt', 'META-INF/LGPL2.1',
                      'META-INF/NOTICE.txt', 'META-INF/NOTICE', 'META-INF/notice.txt']
-		}
+    }
   }
   defaultConfig {
     applicationId 'com.project.main'
     minSdkVersion 21
-    targetSdkVersion 35
+    targetSdkVersion 36
     versionCode 1
     versionName "1.0"
   }
   compileOptions {
     sourceCompatibility "8"
     targetCompatibility "8"
-    coreLibraryDesugaringEnabled true
+    coreLibraryDesugaringEnabled = true
   }
   buildTypes {
     release {
       minifyEnabled true
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), 'proguard-rules.pro'
     }
   }
+
+  kotlin.compilerOptions.jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_1_8)
+
 }
 
 repositories {
